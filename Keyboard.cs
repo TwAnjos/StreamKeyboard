@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace StreamerMacroPRO.Class.Keyboard
+namespace Keyboard
 {
     //Read keyboard keys
     public class Keyboard
@@ -20,13 +20,13 @@ namespace StreamerMacroPRO.Class.Keyboard
         private readonly Action<Key[]> InternalHook;
 
         //Getter UpdateTime
-        public int GetUpateTime() 
+        public int GetUpateTime()
         {
             return this.UpdateTime;
         }
 
         //Setter UpdateTime
-        public void SetUpdateTime(int value) 
+        public void SetUpdateTime(int value)
         {
             if (value < 0)
                 throw new Exception("Update time is less than zero!");
@@ -35,24 +35,24 @@ namespace StreamerMacroPRO.Class.Keyboard
         }
 
         //Getter keys
-        public Key[] GetKeys() 
+        public Key[] GetKeys()
         {
             return this.Keys.ToArray();
         }
 
         //Insert keys values
-        private void InitKeys() 
+        private void InitKeys()
         {
             this.Keys = new List<Key>();
             var names = Enum.GetNames(typeof(System.Windows.Forms.Keys));
             var values = Enum.GetValues(typeof(System.Windows.Forms.Keys)).Cast<int>().ToList();
 
             for (int i = 0; i < names.Length; i++)
-                this.Keys.Add(new Key(names[i], values[i]));       
+                this.Keys.Add(new Key(names[i], values[i]));
         }
 
         //Create and run a thread to update keys status
-        public void InitThread() 
+        private void InitThread()
         {
             Task.Run(() =>
             {
@@ -66,12 +66,12 @@ namespace StreamerMacroPRO.Class.Keyboard
                     InternalHook(GetKeys());
 
                     foreach (var key in Keys)
-                        key.UpdateKeyPress(Native.WindowsImports.GetKeyState(key.GetAddress()));
+                        key.UpdateKeyPress();
                 }
             });
         }
 
-        public Keyboard(Action<Key[]> internalHook) 
+        public Keyboard(Action<Key[]> internalHook)
         {
             if (internalHook == null)
                 throw new Exception("Keyboard hook function is null!");

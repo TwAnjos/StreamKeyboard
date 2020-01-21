@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamerMacroPRO.Class.Keyboard
+namespace Keyboard
 {
+
     //Represents a key in keyboard
     public class Key
     {
         //Types of key pressing status
-        public enum Status 
+        public enum Status
         {
             PRESSING,
             DOWN,
@@ -24,6 +25,9 @@ namespace StreamerMacroPRO.Class.Keyboard
         //Hex address in keyboard
         private readonly int Address;
 
+        //Readed value from keyboard
+        private bool ReadValue;
+
         //Is pressing
         private bool Press;
 
@@ -31,36 +35,36 @@ namespace StreamerMacroPRO.Class.Keyboard
         private Status _Status;
 
         //Getter Name
-        public string GetName() 
+        public string GetName()
         {
             return this.Name;
         }
 
         //Getter address
-        public int GetAddress() 
+        public int GetAddress()
         {
             return this.Address;
         }
 
         //Getter _Status
-        public Status GetStatus() 
+        public Status GetStatus()
         {
             return this._Status;
         }
 
         //Update key status
-        public void UpdateKeyStatus(int readValue) 
+        public void UpdateKeyStatus(int readValue)
         {
-            var status = readValue == -127 || readValue == -128;
+            this.ReadValue = readValue == -127 || readValue == -128;
 
-            if (status)
+            if (ReadValue)
             {
                 if (!this.Press)
                     this._Status = Status.DOWN;
                 else
                     this._Status = Status.PRESSING;
             }
-            else 
+            else
             {
                 if (this.Press)
                     this._Status = Status.UP;
@@ -70,13 +74,13 @@ namespace StreamerMacroPRO.Class.Keyboard
         }
 
         //Set keyboardReaded value of this key
-        public void UpdateKeyPress(int readValue) 
+        public void UpdateKeyPress()
         {
-            this.Press = readValue == -127 || readValue == -128;
+            this.Press = ReadValue;
         }
 
         //Constructor
-        public Key(string name, int address) 
+        public Key(string name, int address)
         {
             if (name == null)
                 throw new Exception("name or address of a key is null!");

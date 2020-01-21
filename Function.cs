@@ -4,8 +4,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Keyboard;
 
-namespace StreamerMacroPRO.Class.Macro
+namespace Macro
 {
     //Function to apply in key
     public class Function
@@ -17,20 +18,20 @@ namespace StreamerMacroPRO.Class.Macro
         private readonly Action Runnable;
 
         //If all item1 == item2 in this list, Runnable is execute
-        private List<Tuple<Keyboard.Key, Keyboard.Key.Status>> ActivationKeys;
+        private (string keyName, Key.Status status)[] ActivationKeys;
 
         //Check activation keys for run this functions
-        public void Check(Keyboard.Key[] keys) 
+        public void Check(Key[] keys)
         {
             bool run = true;
 
             foreach (var tuple in ActivationKeys)
             {
-                var inKeyboard = keys.FirstOrDefault();
+                var inKeyboard = keys.FirstOrDefault(i => i.GetName() == tuple.keyName);
 
                 if (inKeyboard != null)
                 {
-                    if (inKeyboard.GetStatus() != tuple.Item2)
+                    if (inKeyboard.GetStatus() != tuple.status)
                         run = false;
                 }
                 else
@@ -42,13 +43,13 @@ namespace StreamerMacroPRO.Class.Macro
         }
 
         //Getter Name
-        public string GetName() 
+        public string GetName()
         {
             return this.Name;
         }
 
         //Run function
-        private void Run() 
+        private void Run()
         {
             try
             {
@@ -61,13 +62,14 @@ namespace StreamerMacroPRO.Class.Macro
         }
 
         //Constructor
-        public Function(string name, Action runnable) 
+        public Function(string name, (string key, Key.Status status)[] activationKeys, Action runnable)
         {
             if (name == null || runnable == null)
                 throw new Exception("Function creation, name or runnable is null!");
 
             this.Name = name;
             this.Runnable = runnable;
+            this.ActivationKeys = activationKeys;
         }
     }
 }
