@@ -1,9 +1,0 @@
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\bin\Debug\StreamerMacro.exe.config
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\bin\Debug\StreamerMacro.exe
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\bin\Debug\StreamerMacro.pdb
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.csprojAssemblyReference.cache
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.Main.resources
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.Properties.Resources.resources
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.csproj.GenerateResource.cache
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.exe
-C:\Users\PC\Documents\1293u8ryh9213h209ufh23f9\StreamerMacro\StreamerMacro\obj\Debug\StreamerMacro.pdb
