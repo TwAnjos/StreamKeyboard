@@ -47,19 +47,19 @@ namespace Macro
         }
 
         //Enter in loop of all functions
-        private void Run() 
+        private void Run(ref Keyboard.Keyboard keyboard) 
         {
-            Keyboard.Keyboard interceptClass = new Keyboard.Keyboard((keys) => 
+            keyboard = new Keyboard.Keyboard((keys) => 
             {
                 foreach (var item in functions)
                     item.Check(keys);
             });
         }
 
-        public Macro() 
+        public Macro(ref Keyboard.Keyboard keyboard) 
         {
             this.functions = new List<Function>();
-            Run();
+            Run(ref keyboard);
         }
     }
 }

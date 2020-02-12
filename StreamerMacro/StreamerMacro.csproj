@@ -51,6 +51,7 @@
     <Compile Include="Classes\Keyboard.cs" />
     <Compile Include="Classes\Macro.cs" />
     <Compile Include="Classes\MsgBox.cs" />
+    <Compile Include="Classes\Windows.cs" />
     <Compile Include="Classes\WindowsImports.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

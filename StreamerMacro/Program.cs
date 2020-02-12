@@ -8,7 +8,8 @@ namespace StreamerMacro
 {
     public static class Program
     {
-        public static Macro.Macro App = new Macro.Macro();
+        public static Keyboard.Keyboard Keyboard = null;
+        public static Macro.Macro App = new Macro.Macro(ref Keyboard);
 
         /// <summary>
         /// The main entry point for the application.

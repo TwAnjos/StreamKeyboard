@@ -11,7 +11,7 @@ namespace Keyboard
     public class Keyboard
     {
         //Keyboard update keys status time in ms
-        private int UpdateTime = 15;
+        private int UpdateTime = 50;
 
         //Keys of a keyboard instance
         private List<Key> Keys;
@@ -38,6 +38,12 @@ namespace Keyboard
         public Key[] GetKeys()
         {
             return this.Keys.ToArray();
+        }
+
+        //Get only keys with not pressed/down/up status
+        public Key[] GetPressedKeys() 
+        {
+            return Keys.Where(k => k.GetStatus() != Key.Status.NOTHING).ToArray();
         }
 
         //Insert keys values
